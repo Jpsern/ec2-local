@@ -17,3 +17,6 @@ up:
 restart-all:
 	docker-compose restart
 .PHONY: restart
+
+aml2:
+	docker-compose exec amazon-linux-2 bash
