@@ -19,4 +19,4 @@ restart-all:
 .PHONY: restart
 
 aml2:
-	docker-compose exec -u ec2-user amazon-linux-2 bash
+	docker-compose exec -u ec2-user amazon-linux-2 bash -c 'cd /home/ec2-user'
