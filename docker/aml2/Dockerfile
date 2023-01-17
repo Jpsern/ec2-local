@@ -6,7 +6,7 @@ RUN amazon-linux-extras install -y
 # yum 関係と基本セット導入
 # unzip はどっかで使いそうなのでとりあえず入れておく
 RUN yum update -y && yum install \
-    systemd sudo tar unzip -y
+    which procps systemd sudo tar unzip -y
 
 # ec2-user の作成
 # 本物らしくパスワードなしで sudo が使えるようにしておく
