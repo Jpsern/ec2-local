@@ -1,12 +1,12 @@
-version: "3.7"
+version: "3.9"
 
 services:
   amazon-linux-2:
     build: ./docker/aml2
     container_name: amazon-linux-2
     privileged: true
-    # 必要になったら追加する
     volumes:
-      - type: bind
-        source: ./share
-        target: /share
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ports:
+      - "127.0.0.1:38080:80"
+
