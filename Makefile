@@ -10,11 +10,15 @@ build:
 	docker-compose build --no-cache
 .PHONY: build
 
+rebuild:
+	make down-all && make build
+.PHONY: rebuild
+
 up:
 	docker-compose up -d
 .PHONY: up
 
-restart-all:
+restart:
 	docker-compose restart
 .PHONY: restart
 
