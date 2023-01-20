@@ -1,4 +1,4 @@
-# EC2-base
+# EC2-local
 Use Docker to create a simple environment like Amazon linux.
 
 ## Requirements
