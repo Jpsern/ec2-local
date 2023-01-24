@@ -11,6 +11,11 @@ RUN yum update -y && yum install \
 # 日本語対応
 ENV LANG="ja_JP.UTF-8" LANGUAGE="ja_JP:ja" LC_ALL="ja_JP.UTF-8"
 
+# vim の設定ファイル
+# スケルトンがこの時点で動くのか微妙だけど一応追加
+COPY docker/.vimrc /root/.vimrc
+COPY docker/.vimrc /etc/skel/.vimrc
+
 # ec2-user の作成
 # 本物らしくパスワードなしで sudo が使えるようにしておく
 ARG USERNAME=ec2-user
