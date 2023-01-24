@@ -9,7 +9,8 @@ RUN yum update -y && yum install \
     vim hostname which procps systemd sudo tar unzip -y
 
 # 日本語対応
-ENV LANG="ja_JP.UTF-8" LANGUAGE="ja_JP:ja" LC_ALL="ja_JP.UTF-8"
+ENV LANG ja_JP.utf8
+RUN yum reinstall -y glibc-common
 
 # vim の設定ファイル
 # スケルトンがこの時点で動くのか微妙だけど一応追加
