@@ -11,4 +11,3 @@ set laststatus=2
 set showmatch
 set autoindent
 colorscheme desert
-
