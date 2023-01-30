@@ -16,13 +16,15 @@ RUN yum reinstall -y glibc-common
 COPY .vimrc /root/.vimrc
 COPY .vimrc /etc/skel/.vimrc
 
+# SSH接続用設定
+# PasswordAuthentication と Port の設定を変更
+RUN mkdir -m 700 /root/.ssh
+RUN mkdir -m 700 /etc/skel/.ssh
+RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
+  && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
+  && echo 'root:password' | chpasswd
+
 # ec2-user の作成
 # 本物らしくパスワードなしで sudo が使えるようにしておく
 ARG USERNAME=ec2-user
 RUN useradd -m -s /bin/bash $USERNAME && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers
-
-# SSH接続用設定
-# PasswordAuthentication と Port の設定を変更
-RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
-  && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
-  && echo 'root:password' | chpasswd
