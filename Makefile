@@ -22,7 +22,7 @@ build: ## コンテナ作成
 .PHONY: build
 
 rebuild: ## 環境一括作り直し
-	make down-all && make build
+	make down-all && make build && make up
 .PHONY: rebuild
 
 up: ## コンテナ起動
