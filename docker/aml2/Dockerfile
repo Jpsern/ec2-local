@@ -25,8 +25,8 @@ RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh
   && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
   && echo 'root:password' | chpasswd
 
-## motd の更新を実行
-## 一応 enable も指定しておく
+# motd の更新を実行
+# 一応 enable も指定しておく
 RUN update-motd --enable
 RUN update-motd
 
