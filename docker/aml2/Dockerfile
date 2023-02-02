@@ -5,7 +5,7 @@ RUN amazon-linux-extras install -y
 
 # yum 関係と必要なものいろいろ入れる
 RUN yum update -y && yum install \
-    openssh-server vim hostname which procps systemd sudo tar unzip -y
+    update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
 
 # 日本語対応
 ENV LANG ja_JP.utf8
