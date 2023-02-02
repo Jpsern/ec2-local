@@ -1,9 +1,8 @@
 # EC2-local
-Use Docker to create a simple environment like Amazon linux.
+Create a virtual machine like Amazon Linux 2 for local.
 
 ## Requirements
 - Docker
-- Docker Compose
 - Make
 
 ## Installation
@@ -12,23 +11,16 @@ make build
 ```
 
 ## Usage
-start
 ```
-make up
-```
+USAGE
+  make [TARGET]([ARGS])
 
-stop
+TARGETS
+  help                 print help message
+  down                 stop containers
+  destroy              remove all containers, images, and volumes
+  build                build containers
+  rebuild              rebuild containers
+  up                   start containers
+  restart              restart containers
 ```
-make down
-```
-
-restart
-```
-make restart
-```
-
-login
-```
-make aml2
-```
-
