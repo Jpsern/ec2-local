@@ -5,7 +5,7 @@ RUN amazon-linux-extras install -y
 
 # yum 関係と必要なものいろいろ入れる
 RUN yum update -y && yum install \
-    openssh-server vim hostname which procps systemd sudo tar unzip -y
+    update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
 
 # 日本語対応
 ENV LANG ja_JP.utf8
@@ -24,6 +24,11 @@ RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh
   && sed -ri 's/^PasswordAuthentication yes/#PasswordAuthentication yes/' /etc/ssh/sshd_config \
   && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
   && echo 'root:password' | chpasswd
+
+## motd の更新を実行
+## 一応 enable も指定しておく
+RUN update-motd --enable
+RUN update-motd
 
 # ec2-user の作成
 # 本物らしくパスワードなしで sudo が使えるようにしておく
