@@ -15,7 +15,7 @@ down: ## stop containers
 
 destroy: ## remove all containers, images, and volumes
 	docker-compose down --rmi all --volumes --remove-orphans
-.PHONY: down-all
+.PHONY: destroy
 
 build: ## build containers
 	docker-compose build --no-cache
@@ -35,3 +35,4 @@ restart: ## restart containers
 
 aml2: ## login to amazon-linux-2 container
 	docker-compose exec -u ec2-user amazon-linux-2 bash
+.PHONY: aml2
