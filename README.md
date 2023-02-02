@@ -1,4 +1,7 @@
 # EC2-local
+
+<img src="https://user-images.githubusercontent.com/7730843/216323604-7770ac01-f385-4fdb-bfd1-0d7c62a29b92.png" alt="sample" width="500px">
+
 Create a virtual machine like Amazon Linux 2 for local.
 
 ## Requirements
