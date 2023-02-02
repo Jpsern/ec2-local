@@ -26,4 +26,5 @@ TARGETS
   rebuild              rebuild containers
   up                   start containers
   restart              restart containers
+  aml2                 login to amazon-linux-2 container
 ```
