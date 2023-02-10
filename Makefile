@@ -36,3 +36,9 @@ restart: ## restart containers
 aml2: ## login to amazon-linux-2 container
 	docker-compose exec -u ec2-user amazon-linux-2 bash
 .PHONY: aml2
+
+cp_ssh_key: ## copy ssh public key and change permission
+	docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
+	docker-compose run --rm amazon-linux-2 sudo chmod 600 ~/.ssh/authorized_keys
+	docker-compose run --rm amazon-linux-2 sudo chown ec2-user:ec2-user ~/.ssh/authorized_keys
+.PHONY: cp_ssh_key
