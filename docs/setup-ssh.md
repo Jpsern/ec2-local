@@ -6,11 +6,15 @@ ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa
 ```
 
 ## コンテナに公開鍵をコピー
+
+テキストをコピーして、コンテナ内で自分で authorized_keys を作ってもいいですが面倒なのでコピーで済ませます。
+
 ```
 docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
 ```
 
 ## 公開鍵の権限を変更
+
 コンテナにログイン。
 ```
 make aml2
@@ -22,6 +26,7 @@ $ sudo chown ec2-user:ec2-user ~/.ssh/authorized_keys
 ```
 
 ## 接続
+
 下記のコマンドを実行して接続できればOKです。
 ```
 $ ssh -i ~/.ssh/ec2_local_rsa -p 20022 ec2-user@localhost
