@@ -28,3 +28,6 @@ TARGETS
   restart              restart containers
   aml2                 login to amazon-linux-2 container
 ```
+
+## Advanced
+- [SSH接続設定](/docs/setup-ssh.md)
