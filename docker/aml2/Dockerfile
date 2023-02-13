@@ -1,3 +1,4 @@
+# https://hub.docker.com/_/amazonlinux
 FROM amazonlinux:2
 
 # amazon-linux-extras のインストール
