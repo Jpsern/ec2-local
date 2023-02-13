@@ -22,7 +22,7 @@ build: ## コンテナ初期化
 .PHONY: build
 
 rebuild: ## コンテナ作り直し
-	make destroy && make build && make up
+	make clean && make build && make up
 .PHONY: rebuild
 
 up: ## コンテナ起動
