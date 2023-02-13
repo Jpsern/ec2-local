@@ -5,10 +5,12 @@ RUN amazon-linux-extras install -y
 
 # yum 関係と必要なものいろいろ入れる
 RUN yum update -y && yum install \
-    update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
+    glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
 
 # 日本語対応
 ENV LANG ja_JP.utf8
+ENV LC_ALL ja_JP.utf8
+ENV TZ Asia/Tokyo
 RUN yum reinstall -y glibc-common
 
 # vim の設定ファイル
