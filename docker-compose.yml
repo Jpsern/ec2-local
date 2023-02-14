@@ -4,6 +4,7 @@ services:
   amazon-linux-2:
     build: ./docker/aml2
     container_name: amazon-linux-2
+    hostname: localhost
     privileged: true
     command: /sbin/init
     volumes:
