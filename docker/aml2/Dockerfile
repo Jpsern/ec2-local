@@ -1,3 +1,4 @@
+# https://hub.docker.com/_/amazonlinux
 FROM amazonlinux:2
 
 # amazon-linux-extras のインストール
@@ -5,7 +6,11 @@ RUN amazon-linux-extras install -y
 
 # yum 関係と必要なものいろいろ入れる
 RUN yum update -y && yum install \
-    glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
+    git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
+
+# man コマンドを使えるようにする
+# https://zenn.dev/okz/articles/39d7faa7a6d59a
+RUN yum -y --setopt=tsflags='' install man-pages-ja man-pages-dev-ja
 
 # 日本語対応
 ENV LANG ja_JP.utf8
