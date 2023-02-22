@@ -1,6 +1,6 @@
 # EC2-local
 
-<img src="https://user-images.githubusercontent.com/7730843/216323604-7770ac01-f385-4fdb-bfd1-0d7c62a29b92.png" alt="sample" width="500px">
+![](/docs/images/ssh.png)
 
 VM感覚で使えるローカル用のEC2を作成することができます。
 
