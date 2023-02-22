@@ -9,7 +9,8 @@ RUN yum update -y && yum install \
     git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
 
 # man コマンドを使えるようにする
-RUN yum -y --setopt=tsflags='' install man-pages
+# https://zenn.dev/okz/articles/39d7faa7a6d59a
+RUN yum -y --setopt=tsflags='' install man-pages-ja man-pages-dev-ja
 
 # 日本語対応
 ENV LANG ja_JP.utf8
