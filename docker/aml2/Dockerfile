@@ -8,6 +8,9 @@ RUN amazon-linux-extras install -y
 RUN yum update -y && yum install \
     git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y
 
+# man コマンドを使えるようにする
+RUN yum -y --setopt=tsflags='' install man-pages
+
 # 日本語対応
 ENV LANG ja_JP.utf8
 ENV LC_ALL ja_JP.utf8
