@@ -21,8 +21,7 @@ make aml2
 ```
 コンテナ内でパーミッションと所有者を変更。
 ```
-$ sudo chmod 600 ~/.ssh/authorized_keys
-$ sudo chown ec2-user:ec2-user ~/.ssh/authorized_keys
+$ sudo chmod 600 ~/.ssh/authorized_keys && sudo chown ec2-user:ec2-user ~/.ssh/authorized_keys
 ```
 
 ## 接続
