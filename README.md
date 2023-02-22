@@ -1,6 +1,6 @@
 # EC2-local
 
-![](/ec2-base/docs/images/ssh.png)
+![](/docs/images/ssh.png)
 
 VM感覚で使えるローカル用のEC2を作成することができます。
 
