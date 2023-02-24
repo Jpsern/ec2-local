@@ -2,8 +2,8 @@ name: Lint Dockerfile
 
 on:
   push:
-    paths:
-      - 'docker/**'
+    # paths:
+    #   - 'docker/**'
   workflow_dispatch:
 
 jobs:
