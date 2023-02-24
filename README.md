@@ -1,4 +1,5 @@
 # EC2-local
+[![Lint Dockerfile](https://github.com/Jpsern/ec2-local/actions/workflows/hadolint.yml/badge.svg)](https://github.com/Jpsern/ec2-local/actions/workflows/hadolint.yml)
 
 ![](/docs/images/ssh.png)
 
