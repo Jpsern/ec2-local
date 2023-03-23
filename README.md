@@ -11,7 +11,7 @@ VM感覚で使えるローカル用のEC2を作成することができます。
 
 ## Installation
 ```
-make build
+make build && make up
 ```
 
 ## Usage
