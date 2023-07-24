@@ -43,3 +43,7 @@ RUN update-motd --enable && update-motd
 # 本物らしくパスワードなしで sudo が使えるようにしておく
 ARG USERNAME=ec2-user
 RUN useradd -m -s /bin/bash $USERNAME && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers
+
+# systemd実行対応用
+VOLUME [ "/sys/fs/cgroup" ]
+CMD ["/usr/sbin/init"]
