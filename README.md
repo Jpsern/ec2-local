@@ -6,7 +6,7 @@
 VM感覚で使えるローカル用のEC2を作成することができます。
 
 ## Requirements
-- Docker
+- Docker Desktop(`>=4.19.0`)
 - Make
 
 ## Installation
