@@ -1,20 +1,20 @@
 version: "3.9"
 
 services:
-  amazon-linux-2:
-    cgroup: host #systemd実行対応
-    build: ./docker/aml2
-    container_name: amazon-linux-2
-    hostname: localhost
-    privileged: true
-    ports:
-      - "127.0.0.1:38080:80"
-      - 20022:20022
+  # amazon-linux-2:
+  #   cgroup: host #systemd実行対応
+  #   build: ./docker/aml2
+  #   container_name: amazon-linux-2
+  #   hostname: localhost
+  #   privileged: true
+  #   ports:
+  #     - "127.0.0.1:38080:80"
+  #     - 20022:20022
   amazon-linux-2023:
     cgroup: host #systemd実行対応
     build: ./docker/aml2023
     container_name: amazon-linux-2023
-    hostname: localhost
-    privileged: true
+    # hostname: localhost
+    # privileged: true
     ports:
       - 20122:20022
