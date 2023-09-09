@@ -18,3 +18,5 @@ services:
     privileged: true
     ports:
       - 20122:20022
+    tty: true
+
