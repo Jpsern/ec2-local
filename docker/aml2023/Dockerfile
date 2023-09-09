@@ -5,9 +5,6 @@ FROM amazonlinux:2023
 # https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# amazon-linux-extras のインストール
-RUN amazon-linux-extras install -y
-
 # 必要なものいろいろ入れる
 RUN dnf update -y && dnf install \
     git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y && yum clean all
