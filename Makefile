@@ -36,3 +36,7 @@ restart: ## コンテナ再起動
 aml2: ## amazon-linux-2 コンテナにログイン
 	docker-compose exec -u ec2-user amazon-linux-2 bash
 .PHONY: aml2
+
+aml2023: ## amazon-linux-2023 コンテナにログイン
+	docker-compose exec -u ec2-user amazon-linux-2023 bash
+.PHONY: aml2023
