@@ -9,10 +9,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN dnf update -y && dnf install \
     git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y && yum clean all
 
-# man コマンドを使えるようにする
-# https://zenn.dev/okz/articles/39d7faa7a6d59a
-RUN dnf -y --setopt=tsflags='' install man-pages-ja man-pages-dev-ja && dnf clean all
-
 # 日本語対応
 ENV LANG ja_JP.utf8
 ENV LC_ALL ja_JP.utf8
