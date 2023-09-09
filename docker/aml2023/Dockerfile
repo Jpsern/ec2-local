@@ -22,7 +22,7 @@ COPY .vimrc /etc/skel/.vimrc
 
 # SSH接続用設定
 # PasswordAuthentication と Port の設定を変更
-RUN mkdir -m 700 /root/.ssh && mkdir -m 700 /etc/skel/.ssh
+RUN mkdir -m 700 /etc/skel/.ssh
 RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
   && sed -ri 's/^PasswordAuthentication yes/#PasswordAuthentication yes/' /etc/ssh/sshd_config \
   && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
