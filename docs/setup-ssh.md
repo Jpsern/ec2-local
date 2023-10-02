@@ -12,29 +12,32 @@ ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa
 
 テキストをコピーして、コンテナ内で自分で authorized_keys を作ってもいいですが面倒なのでコピーで済ませます。
 
-amazon-linux-2
-```
+### amazon-linux-2
+```sh
 docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
 ```
 
-amazon-linux-2023
-```
+### amazon-linux-2023
+```sh
 docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
 ```
 
 ## 公開鍵の権限を変更
 
 コンテナにログイン。
-```
-# Amazon Linux 2
-make aml2
 
-# Amazon Linux 2023
+### Amazon Linux 2
+```sh
+make aml2
+```
+
+### Amazon Linux 2023
+```sh
 make aml2023
 ```
 
 コンテナ内でパーミッションと所有者を変更。
-```
+```sh
 sudo chmod 600 ~/.ssh/authorized_keys && sudo chown ec2-user:ec2-user ~/.ssh/authorized_keys
 ```
 
@@ -42,9 +45,9 @@ sudo chmod 600 ~/.ssh/authorized_keys && sudo chown ec2-user:ec2-user ~/.ssh/aut
 
 下記のコマンドを実行して接続できればOKです。
 
-Amazon Linux 2
-```
-$ ssh -i ~/.ssh/ec2_local_rsa -p 20022 ec2-user@localhost
+### Amazon Linux 2
+```sh
+ssh -i ~/.ssh/ec2_local_rsa -p 20022 ec2-user@localhost
 ```
 ```
 
@@ -55,9 +58,9 @@ $ ssh -i ~/.ssh/ec2_local_rsa -p 20022 ec2-user@localhost
 https://aws.amazon.com/amazon-linux-2/
 ```
 
-Amazon Linux 2023
-```
-$ ssh -i ~/.ssh/ec2_local_rsa -p 20122 ec2-user@localhost
+### Amazon Linux 2023
+```sh
+ssh -i ~/.ssh/ec2_local_rsa -p 20122 ec2-user@localhost
 ```
 ```
    ,     #_
