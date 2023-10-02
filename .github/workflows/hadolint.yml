@@ -17,3 +17,8 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: ./docker/aml2/Dockerfile
+
+      - name: Run Lint Amazon Linux 2023
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./docker/aml2023/Dockerfile
