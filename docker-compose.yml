@@ -16,6 +16,8 @@ services:
     container_name: amazon-linux-2023
     hostname: localhost
     privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     ports:
       - 20122:20022
     tty: true
