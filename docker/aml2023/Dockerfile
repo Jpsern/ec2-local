@@ -25,7 +25,7 @@ COPY .vimrc /etc/skel/.vimrc
 RUN mkdir -m 700 /etc/skel/.ssh
 RUN sed -ri 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
   && sed -ri 's/^PasswordAuthentication yes/#PasswordAuthentication yes/' /etc/ssh/sshd_config \
-  && sed -ri 's/^#Port 22/Port 20022/' /etc/ssh/sshd_config \
+  && sed -ri 's/^#Port 22/Port 20122/' /etc/ssh/sshd_config \
   && echo 'root:password' | chpasswd
 
 # motd の更新を実行
