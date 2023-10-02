@@ -10,3 +10,15 @@ services:
     ports:
       - "127.0.0.1:38080:80"
       - 20022:20022
+  amazon-linux-2023:
+    cgroup: host #systemd実行対応
+    build: ./docker/aml2023
+    container_name: amazon-linux-2023
+    hostname: localhost
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ports:
+      - 20122:20022
+    tty: true
+
