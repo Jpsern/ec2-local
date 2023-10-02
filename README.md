@@ -2,6 +2,7 @@
 [![Lint Dockerfile](https://github.com/Jpsern/ec2-local/actions/workflows/hadolint.yml/badge.svg)](https://github.com/Jpsern/ec2-local/actions/workflows/hadolint.yml)
 
 ![](/docs/images/ssh.png)
+![](/docs/images/ssh-al2023.png)
 
 VM感覚で使えるローカル用のEC2を作成することができます。
 
@@ -28,6 +29,7 @@ TARGETS
   up                   コンテナ起動
   restart              コンテナ再起動
   aml2                 amazon-linux-2 コンテナにログイン
+  aml2023              amazon-linux-2023 コンテナにログイン
 ```
 
 ## Advanced
