@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # 必要なものいろいろ入れる
 RUN dnf update -y && dnf install \
-    git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y && yum clean all
+    git tree glibc-langpack-ja update-motd openssh-server vim hostname which procps systemd sudo tar unzip -y && dnf clean all
 
 # 日本語対応
 ENV LANG ja_JP.utf8
