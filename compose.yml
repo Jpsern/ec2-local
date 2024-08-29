@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   amazon-linux-2:
     cgroup: host #systemd実行対応
