@@ -10,15 +10,15 @@ help: ## ヘルプの表示
 .PHONY: help
 
 down: ## コンテナ停止
-	docker-compose down
+	docker compose down
 .PHONY: down
 
 clean: ## コンテナ、イメージ、ボリューム掃除
-	docker-compose down --rmi all --volumes --remove-orphans
+	docker compose down --rmi all --volumes --remove-orphans
 .PHONY: clean
 
 build: ## コンテナ初期化
-	docker-compose build --no-cache
+	docker compose build --no-cache
 .PHONY: build
 
 rebuild: ## コンテナ作り直し
@@ -26,17 +26,17 @@ rebuild: ## コンテナ作り直し
 .PHONY: rebuild
 
 up: ## コンテナ起動
-	docker-compose up -d
+	docker compose up -d
 .PHONY: up
 
 restart: ## コンテナ再起動
-	docker-compose restart
+	docker compose restart
 .PHONY: restart
 
 aml2: ## amazon-linux-2 コンテナにログイン
-	docker-compose exec -u ec2-user amazon-linux-2 bash
+	docker compose exec -u ec2-user amazon-linux-2 bash
 .PHONY: aml2
 
 aml2023: ## amazon-linux-2023 コンテナにログイン
-	docker-compose exec -u ec2-user amazon-linux-2023 bash
+	docker compose exec -u ec2-user amazon-linux-2023 bash
 .PHONY: aml2023
