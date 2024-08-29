@@ -14,12 +14,12 @@ ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa
 
 ### amazon-linux-2
 ```sh
-docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
+docker compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
 ```
 
 ### amazon-linux-2023
 ```sh
-docker-compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
+docker compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
 ```
 
 ## 公開鍵の権限を変更
