@@ -33,6 +33,13 @@ restart: ## コンテナ再起動
 	docker compose restart
 .PHONY: restart
 
+setup-ssh: ## SSH鍵の作成・公開鍵コピー・権限設定
+	@test -f ~/.ssh/ec2_local_rsa || ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa -N ""
+	@docker compose up -d amazon-linux-2023
+	@docker compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
+	@docker compose exec -u root amazon-linux-2023 sh -lc 'chmod 600 /home/ec2-user/.ssh/authorized_keys && chown ec2-user:ec2-user /home/ec2-user/.ssh/authorized_keys'
+.PHONY: setup-ssh
+
 aml2023: ## amazon-linux-2023 コンテナにログイン
 	docker compose exec -u ec2-user amazon-linux-2023 bash
 .PHONY: aml2023
