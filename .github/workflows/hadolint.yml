@@ -13,11 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Run Lint Amazon Linux 2
-        uses: hadolint/hadolint-action@v3.3.0
-        with:
-          dockerfile: ./docker/aml2/Dockerfile
-
       - name: Run Lint Amazon Linux 2023
         uses: hadolint/hadolint-action@v3.3.0
         with:

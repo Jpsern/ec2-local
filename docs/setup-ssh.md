@@ -1,37 +1,35 @@
 # SSH 接続用設定
 
-Amazon Linux 2 と Amazon Linux 2023 用で異なる部分は記述を分けています。それ以外は共通です。
+Amazon Linux 2023 用の設定です。
 
-## 鍵ペアの作成
+## SSH接続用設定の一括実行
+次のコマンドで「鍵ペアの作成」「公開鍵のコピー」「公開鍵の権限設定」をまとめて実行できます。
+```sh
+make setup-ssh
+```
+
+なお、既存の `~/.ssh/ec2_local_rsa` がある場合は再作成しません。
+
+## 一括実行の詳細
+前述にて一括実行している内容の説明です。不要であれば読み飛ばしてください。
+
+### 鍵ペアの作成
 `~/.ssh/ec2_local_rsa` は任意の名前でOK。ここではこのパス、ファイル名を前提に話を進めます。
 ```
 ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa
 ```
 
-## コンテナに公開鍵をコピー
+### コンテナに公開鍵をコピー
 
 テキストをコピーして、コンテナ内で自分で authorized_keys を作ってもいいですが面倒なのでコピーで済ませます。
-
-### amazon-linux-2
-```sh
-docker compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2:/home/ec2-user/.ssh/authorized_keys
-```
-
-### amazon-linux-2023
 ```sh
 docker compose cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
 ```
 
-## 公開鍵の権限を変更
+### 公開鍵の権限を変更
 
 コンテナにログイン。
 
-### Amazon Linux 2
-```sh
-make aml2
-```
-
-### Amazon Linux 2023
 ```sh
 make aml2023
 ```
@@ -44,19 +42,6 @@ sudo chmod 600 ~/.ssh/authorized_keys && sudo chown ec2-user:ec2-user ~/.ssh/aut
 ## 接続
 
 下記のコマンドを実行して接続できればOKです。
-
-### Amazon Linux 2
-```sh
-ssh -i ~/.ssh/ec2_local_rsa -p 20022 ec2-user@localhost
-```
-```
-
-       __|  __|_  )
-       _|  (     /   Amazon Linux 2 AMI
-      ___|\___|___|
-
-https://aws.amazon.com/amazon-linux-2/
-```
 
 ### Amazon Linux 2023
 ```sh
@@ -73,22 +58,15 @@ ssh -i ~/.ssh/ec2_local_rsa -p 20122 ec2-user@localhost
       ~~._.   _/
          _/ _/
        _/m/'
-Last login: Mon Oct  2 15:15:09 2023 from 172.19.0.1
+Last login: Fri Jun 26 17:51:06 2026 from 172.18.0.1
+[ec2-user@localhost ~]$ 
 ```
 
 ## config
 
-面倒な人は `~/.ssh/config` に書いておけば楽です。
+面倒な人は `~/.ssh/config` に下記の内容を書いておけば `ssh amazon-linux-2023` だけで接続が可能です。
 
 ```ssh-config
-# Amazon Linux 2
-Host amazon-linux
-HostName localhost
-User ec2-user
-Port 20022
-IdentityFile ~/.ssh/ec2_local_rsa
-
-# Amazon Linux 2023
 Host amazon-linux-2023
 HostName localhost
 User ec2-user
