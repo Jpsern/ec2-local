@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := help
 
 COMPOSE_CMD := docker compose
+SSH_KEY := ~/.ssh/ec2_local_rsa
+EC2_USER := ec2-user
 
 help: ## ヘルプの表示
 	@echo
@@ -13,6 +15,7 @@ help: ## ヘルプの表示
 
 down: ## コンテナ停止
 	$(COMPOSE_CMD) down
+
 clean: ## コンテナ、イメージ、ボリューム掃除
 	$(COMPOSE_CMD) down --rmi all --volumes --remove-orphans
 
@@ -20,7 +23,7 @@ build: ## コンテナ初期化
 	$(COMPOSE_CMD) build --no-cache
 
 rebuild: ## コンテナ作り直し
-	make clean && make build && make up
+	$(MAKE) clean && $(MAKE) build && $(MAKE) up
 
 up: ## コンテナ起動
 	$(COMPOSE_CMD) up -d
@@ -29,10 +32,10 @@ restart: ## コンテナ再起動
 	$(COMPOSE_CMD) restart
 
 setup-ssh: ## SSH鍵の作成・公開鍵コピー・権限設定
-	@test -f ~/.ssh/ec2_local_rsa || ssh-keygen -t rsa -f ~/.ssh/ec2_local_rsa -N ""
+	@test -f $(SSH_KEY) || ssh-keygen -t rsa -f $(SSH_KEY) -N ""
 	@$(COMPOSE_CMD) up -d amazon-linux-2023
-	@$(COMPOSE_CMD) cp ~/.ssh/ec2_local_rsa.pub amazon-linux-2023:/home/ec2-user/.ssh/authorized_keys
-	@$(COMPOSE_CMD) exec -u root amazon-linux-2023 sh -lc 'chmod 600 /home/ec2-user/.ssh/authorized_keys && chown ec2-user:ec2-user /home/ec2-user/.ssh/authorized_keys'
+	@$(COMPOSE_CMD) cp $(SSH_KEY).pub amazon-linux-2023:/home/$(EC2_USER)/.ssh/authorized_keys
+	@$(COMPOSE_CMD) exec -u root amazon-linux-2023 sh -lc 'chmod 600 /home/$(EC2_USER)/.ssh/authorized_keys && chown $(EC2_USER):$(EC2_USER) /home/$(EC2_USER)/.ssh/authorized_keys'
 
 aml2023: ## amazon-linux-2023 コンテナにログイン
-	$(COMPOSE_CMD) exec -u ec2-user amazon-linux-2023 bash
+	$(COMPOSE_CMD) exec -u $(EC2_USER) amazon-linux-2023 bash

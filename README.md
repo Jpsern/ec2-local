@@ -27,6 +27,7 @@ TARGETS
   rebuild              コンテナ作り直し
   up                   コンテナ起動
   restart              コンテナ再起動
+  setup-ssh            SSH鍵の作成・公開鍵コピー・権限設定
   aml2023              amazon-linux-2023 コンテナにログイン
 ```
 
